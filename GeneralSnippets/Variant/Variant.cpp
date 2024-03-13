@@ -113,9 +113,36 @@ namespace VariantDemo {
 
         std::variant<int, double, std::string> var{ 123 };
 
+        // std::get<what type>
+
         // using a generic visitor (matching all types in the variant)
         auto visitor = [](const auto& elem) {
-            std::cout << elem << std::endl;
+
+
+            using Type = decltype(elem);
+
+            using TypeWithoutReference = std::remove_reference<Type>::type;
+
+            using TypeWithoutReferenceAndConst = std::remove_const<TypeWithoutReference>::type;
+
+            if constexpr ( std::is_same<TypeWithoutReferenceAndConst, int>::value == true ) {
+
+                std::cout << "int: " << elem << std::endl;
+            }
+            else if constexpr (std::is_same<TypeWithoutReferenceAndConst, double>::value == true ) {
+
+                std::cout << "double: " << elem << std::endl;
+            }
+            else if constexpr (std::is_same<TypeWithoutReferenceAndConst, std::string>::value == true) {
+
+                std::cout << "std::string: " << elem << std::endl;
+                std::cout << "Length:      " << elem.size() << std::endl;
+            }
+            else {
+
+                std::cout << "Unknown" << std::endl;
+            }
+
         };
 
         std::visit(visitor, var);
@@ -129,11 +156,13 @@ namespace VariantDemo {
 
     // -------------------------------------------------------------------
 
+    // callable Object // classic way
     class Visitor
     {
     public:
         Visitor() = default;
 
+        // function call operator (overloaded)
         void operator() (int n) {
             std::cout << "int: " << n << std::endl;
         }
@@ -254,13 +283,13 @@ namespace VariantDemo {
 void main_variant()
 {
     using namespace VariantDemo;
-    test_01();
-    test_02();
+    //test_01();
+    //test_02();
     test_03();
-    test_04();
-    test_05();
-    test_06();
-    test_07();
+    //test_04();
+    //test_05();
+    //test_06();
+    //test_07();
 }
 
 // =====================================================================================

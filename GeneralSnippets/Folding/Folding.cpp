@@ -4,6 +4,53 @@
 
 module modern_cpp:folding;
 
+
+namespace Folding_Seminar {
+
+    template <typename ... TArgs>
+    int adder(TArgs ... args) {
+
+        // result = 1 + 2 + 3 + 4 + 5;
+
+        auto result =  (  ... + args );
+
+        return result;
+    }
+
+    template <typename ... TArgs>
+    int subtracter (TArgs ... args) {
+
+        // 1 - 2 - 3   = -4
+        // 1 - (2 - 3) = +2
+
+        auto result = (args - ...);
+
+        return result;
+    }
+
+    template <typename T, typename ... TArgs>
+    void printer ( T first,   TArgs ... args) {
+
+        std::cout << first;
+
+           ( ... , (std::cout << ", " << args) );
+
+         //  (std::cout << ... << args);
+    }
+
+
+    void test_folding() {
+
+        printer(1, 2, 3, 4, 5);
+        std::cout << std::endl;
+    }
+}
+
+
+
+
+
+
 namespace Folding {
 
     /* folding examples: introduction
@@ -130,15 +177,18 @@ namespace Folding {
 
 void main_folding()
 {
-    using namespace Folding;
-    test_01();
-    test_02();
-    test_03a();
-    test_03b();
-    test_03c();
-    test_03d();
-    test_04();
-    test_05();
+    using namespace Folding_Seminar;
+    test_folding();
+
+    //using namespace Folding;
+    //test_01();
+    //test_02();
+    //test_03a();
+    //test_03b();
+    //test_03c();
+    //test_03d();
+    //test_04();
+    //test_05();
 }
 
 // =====================================================================================

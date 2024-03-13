@@ -4,6 +4,11 @@ Peter Loos
 
 Good Morning :)
 
+
+peter.loos@gmx.de
+
+
+
 =======================================
 
 C++:   Flavor // Idiom
@@ -199,4 +204,118 @@ std::initializer_list
 ========================================
 
 emplace
+
+========================================
+
+
+std::variant:    
+
+std::visit
+
+
+
+A variable of std::variant can hold data of different types,
+at a specific time.
+
+Example: 
+
+Excel ==> Cell : Value, Date, Currency, Text, .........
+
+Game Programming:
+
+Game Board   ===> Figures
+
+
+========================================
+
+Folding
+
+==> Operatoren
+
+==> Mehrfache Anwendung
+
+int x = 1 + 2 + 3;
+
+Special Syntax: 
+
+========================================
+
+C++ STL 
+
+std::thread
+
+std::async, std::promise
+
+std::condition_variable 
+
+Mutex  ... std::lock_guard // 
+
+// C++ 17:
+
+std::latch,  std::semaphore
+
+========================================
+
+
+
+std::thread
+
+HANDLE CreateThread(
+  [in, optional]  LPSECURITY_ATTRIBUTES   lpThreadAttributes,
+  [in]            SIZE_T                  dwStackSize,
+  [in]            LPTHREAD_START_ROUTINE  lpStartAddress,
+  [in, optional]  __drv_aliasesMem LPVOID lpParameter,
+  [in]            DWORD                   dwCreationFlags,
+  [out, optional] LPDWORD                 lpThreadId
+);
+
+
+
+
+Thread Pool:    Re-USES formerly created threads
+
+QueueUserWorkItem  ==============>  
+
+std::async:
+ What does std::async use :  CreateThread   or Thread Pool API  ?????????????????
+
+
+Future ----  Promises
+
+
+=======================================
+
+
+Threading:
+
+a) Collision of concurrent data access:   ==> Mutex   // atomic
+
+   
+
+b) Cooperation:    std::condition_variable
+
+
+  General Idea behind Cooperation:    Dijkstra   ==>  Monitor
+
+
+=======================================
+
+Semphores
+
+=======================================
+
+
+placement new
+
+classes // 
+
+
+=======================================
+
+                ::new (m_data + m_pushIndex) T{ item };
+
+
+
+
+
 

@@ -48,7 +48,7 @@ int main()
         //main_generate();
         //main_generic_lambdas();
         //main_keyword_explicit();
-        //main_folding();
+       // main_folding();
         //main_functional_programming_ranges();
         //main_functional_programming();
         //main_functional_programming_alternate();
@@ -67,7 +67,7 @@ int main()
         //main_move_semantics();
         //main_optional();
         //main_perfect_forwarding();
-        //main_placement_new();
+        main_placement_new();
         //main_raii();
         //main_raii_02();
         //main_random();
