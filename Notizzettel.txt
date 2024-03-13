@@ -1,0 +1,202 @@
+Seminar "Modern C++"
+
+Peter Loos
+
+Good Morning :)
+
+=======================================
+
+C++:   Flavor // Idiom
+
+Object-Oriented Programming
+Generic Programming
+Functional Programming // ranges
+
+=======================================
+
+C++:  Lexikon
+
+keywords, identifiers,
+constants / literals:
+
+1
+123.456
+
+int* = & n;
+
+// int* = 234234;
+
+=======================================
+
+
+Cpp Insights 
+
+========================================
+
+std::initializer_list:     ONLY  STACK
+
+std::vector:               HEAP
+
+std::vector vec1( 100 );  // 100 elements of value 0
+
+std::vector vec2{ 100 };  // 1 element of value 100
+
+
+
+std::initializer_list is a Light-Weight Container:
+
+
+= begin(), end()
+= size()
+
+==================================================
+
+Smart Pointer:
+
+Idee:
+
+Problem:  
+
+
+int* ip = new int[100];
+
+delete[] ip;  // <============================
+
+Idee:
+
+1.) C++ // Objects // Constructors // Destructors
+
+2.) When is a Destructor called ???? deterministic
+
+             At the end of the Block.
+
+3.) Combine deterministic behaviour with Pointers ???
+
+4.) Idee: Let me put a pointer INTO an object:
+
+    Wrapper Object
+
+    Why: I could call the delete in the destructors:
+
+     deterministic behaviour
+
+A) std::auto_ptr   deprecated
+
+B) 2 Smart Pointer: 
+
+Strategy 1:  
+
+At ONE TIME during Execution of the program
+there can be only ONE OWNER of the Pointer !!!
+
+e.g.: can I copy such an object: NO
+
+std::unique_ptr
+
+----------------------------------------------
+
+Strategy 2:  
+
+At ONE TIME during Execution of the program
+there can be SEVERAL OWNERS of the Pointer !!!
+
+
+Hmmm, who executes / calls delete ??????????
+
+The last one :)
+
+I have to COUNT the owners: Reference Counter
+
+e.g.: can I copy such an object: YES
+
+std::shared_ptr
+
+----------------------------------------------
+
+Go for Unique_Ptr OR Shared_Ptr  ???
+
+Shared_Ptr: Doesnt work always :-(((((((((((((((
+
+Solution:
+
+i) Shared_Ptr 
+
+ii) Weak_Ptr
+
+=======================================
+
+Constants // Literals
+
+123.65564f
+
+class Color
+
+Color myColor = 0xFF0000_color;   // objects
+
+Color red = 0xFF0000_rgb;   // objects
+
+int distance = 100_km;
+
+int distance = 100_miles;
+
+int weight = 200_pound;
+
+int weight = 200_kilogramm;
+
+
+
+Programming Language:
+
+Lexikon
+Grammar  // Syntax
+
+
+200_kilogramm is NOT part of the C++ Lexikon,
+
+but can be ADDED.
+
+UDL  == User Defined Literal
+
+A) operator "":   Literal Operator
+
+B) Syntax Enhancement of operator:
+
+     An User defined Identifier (_kilogramm) can be added.
+
+=======================================================
+
+Fixed Size Arrays:
+
+
+int numbersC [100]                  C Style
+
+std::array <int, 100> numbersSTL;     STL Array
+
+
+Go for std::array
+
+
+a) numbersC[200] ==> crash
+
+a) numbersSTL[200] ==> crash
+
+   numbersSTL.at (200) ==> built in Exception Handling
+
+   Performance: checking
+
+====================================================
+
+std::string
+std::string_view
+
+std::array<>
+std::span
+
+
+std::vector
+std::initializer_list
+
+========================================
+
+emplace
+
